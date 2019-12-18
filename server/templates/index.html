@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+    <style>
+      .chart-container {
+        margin: 0 auto;
+        position: relative;
+        height: 50vh;
+        width: 70vw;
+      }
+    </style>
+    <title>ChickensBot | Sales Expectations</title>
+  </head>
+  <body>
+    <div class="chart-container">
+      <canvas id="myChart"></canvas>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $.get(
+          "sales-expectations",
+          function(data) {
+            console.log(data);
+
+            var dates = data.dates;
+            var sales = data.sales;
+            var prediction = data.prediction;
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: dates,
+                datasets: [
+                  {
+                    label: 'Sales Expectations',
+                    lineTension: 0,
+                    fill: false,
+                    data: prediction,
+                    borderWidth: 2,
+                    borderColor: "red",
+                  },
+                  {
+                    label: 'Sales Effective',
+                    data: sales,
+                    fill: false,
+                    lineTension: 0,
+                    borderWidth:2,
+                    borderColor: "blue",
+                  }
+                ]
+              },
+              options: {
+                elements: {
+                  point: {
+                    radius: 0
+                  }
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }],
+                  xAxis: [{
+                    display: true,
+                    type: 'time',
+                    time: {
+                      parser: 'YYYY-MM-DD',
+                      tooltipFormat: 'll HH:mm',
+                      unit: 'day',
+                      unitStepSize: 1,
+                      displayFormats: {
+                        'day': 'DD/MM/YYYY'
+                      }
+                    }
+                  }],
+                }
+              }
+            });
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
