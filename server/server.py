@@ -26,4 +26,4 @@ def save_prediction_to_csv():
     return render_template("saved.html")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")

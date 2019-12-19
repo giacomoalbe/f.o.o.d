@@ -152,6 +152,8 @@ def predict():
 
     colonne = results.copy()
 
+    colonne.sort_values(by=["date"], ascending=True, inplace=True)
+
     colonne = colonne[['date', 'y_true', 'y_pred']]
 
     dates = pd.to_datetime(colonne['date']).dt.date.unique().tolist()
@@ -196,7 +198,8 @@ def get_prediction_from_file():
         }
 
         for row in reader:
-            if i > 0:
+            if i > 0 and len(row) > 0:
+                print(row)
                 results['dates'].append(row[0])
                 results['prediction'].append(row[1])
                 results['sales'].append(row[2])

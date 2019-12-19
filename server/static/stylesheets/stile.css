@@ -1,0 +1,101 @@
+#titolo
+{
+    font-size: 27px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #ff4500;
+    line-height: 1;
+
+}
+
+#page-top
+{
+    background-color: #102230;
+}
+
+#logo
+{
+    width: 50px;
+    height: 50px;
+    position:absolute;
+    margin-left: -117px;
+    margin-top: -15px;
+
+    
+}
+
+.sinistro{
+margin:0;
+padding:0;
+width:300px;
+height: 43px;
+
+}
+
+#banana
+{   width: 275px;
+    height: 42px;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.destro {
+margin:0;
+padding:0;
+width:100px;
+height:50px;
+
+text-align:center;
+
+font-size:25px;
+}
+
+.sinistro{float:left;}
+
+.destro{float:right;}
+
+#andamento
+{
+    color: #ff4500;
+    text-decoration: none;
+}
+
+#andamento: hover
+{
+    color: #102230;
+    
+}
+
+
+@media only screen and (min-width: 240px)
+{ 
+    #titolo
+    {
+       opacity: 0%; 
+    }
+}
+
+@media only screen and (min-width: 768px)
+{
+     #titolo
+    {
+       opacity: 100%; 
+    }
+    
+}
+
+@media only screen and (min-width: 240px)
+{ 
+    #logo
+    {
+       opacity: 100%; 
+    }
+}
+
+@media only screen and (min-width: 768px)
+{
+     #logo
+    {
+       opacity: 0%; 
+    }
+    
+}
